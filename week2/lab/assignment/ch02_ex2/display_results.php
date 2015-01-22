@@ -3,6 +3,7 @@
     $investment = $_POST['investment'];
     $interest_rate = $_POST['interest_rate'];
     $years = $_POST['years'];
+    $error_message = '';
 
     // validate investment entry
     if ( empty($investment) ) {
@@ -13,7 +14,7 @@
         $error_message .= '<p>Investment must be greater than zero.</p>'; }
 
     // validate interest rate entry
-    else if ( empty($interest_rate ) ) {
+    if ( empty($interest_rate ) ) {
         $error_message .= '<p>Interest rate is a required field.</p>'; }
     else if ( !is_numeric($interest_rate) )  {
         $error_message .= '<p>Interest rate must be a valid number.</p>'; }
@@ -21,16 +22,12 @@
         $error_message .= '<p>Interest rate must be greater than zero and less than or equal to 15</p>'; }
         
     // validate years entry
-    else if ( empty($years) ) {
+    if ( empty($years) ) {
            $error_message .= '<p>Years is a required field.</p>';}
     else if ( !is_numeric($years) ) {
            $error_message .= '<p>Years must be a valid number.</p>';}
     else if ( $years <= 0 || $years >= 51) {
         $error_message .= '<p>Years must be greater than zero and less than or equal to 50</p>'; }
-
-    // set error message to empty string if no invalid entries
-    else {
-        $error_message = ''; }
 
     // if an error message exists, go to the index page
     if ($error_message != '') {
@@ -56,7 +53,7 @@
     <link rel="stylesheet" type="text/css" href="main.css"/>
 </head>
 <body>
-    <div id="content">
+    
         <h1>Future Value Calculator</h1>
 
         <label>Investment Amount:</label>
@@ -71,7 +68,10 @@
         <label>Future Value:</label>
         <span><?php echo $future_value_f; ?></span><br />
         
-        <?php echo 'This calculation was done on ' .date('m/d/y h:i'); ?>
+        <?php 
+        date_default_timezone_set("America/New_York");
+        echo 'This calculation was done on ' .date('m/d/y h:i'); 
+        ?>
  
     
     <form action="index.php" method="post">
@@ -80,6 +80,6 @@
         <input type="submit" value="Reset"/><br />
     </div>
     </form>
-    </div>
+    
 </body>
 </html>
