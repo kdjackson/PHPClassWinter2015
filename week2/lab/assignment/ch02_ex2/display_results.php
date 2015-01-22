@@ -53,7 +53,7 @@
     <link rel="stylesheet" type="text/css" href="main.css"/>
 </head>
 <body>
-    
+    <div id="content">
         <h1>Future Value Calculator</h1>
 
         <label>Investment Amount:</label>
@@ -80,6 +80,6 @@
         <input type="submit" value="Reset"/><br />
     </div>
     </form>
-    
+    </div>
 </body>
 </html>

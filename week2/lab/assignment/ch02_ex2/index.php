@@ -9,16 +9,13 @@
 <body>
     <div id="content">
     <h1>Future Value Calculator</h1>
-   
-          
-        <?php 
-        
-        if (empty($_POST)) {
+           
+    <?php 
+            if (empty($_POST)) {
             $investment = rand();
             $interest_rate = rand(1,15);
             $years = rand(1,50);
         }
-
         ?>
  
     <?php if (!empty($error_message)) { ?>
