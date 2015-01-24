@@ -59,7 +59,6 @@
 
     <br />
     <p><a href= "index.php">List Products</a></p>
-    <p><a href="category_list.php">Category List</a></p>
 
     </div> <!-- end main -->
 

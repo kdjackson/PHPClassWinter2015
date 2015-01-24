@@ -11,8 +11,19 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        echo $_POST["category_name"];
+
+        $category_name = $_POST['category_name'];
+
+        // Delete the product from the database
+        require_once('database.php');
+        $query = "DELETE FROM categories
+            WHERE categoryName = '$category_name'";
+        $db->exec($query);
+
+        // display the Product List page
+        include('index.php');
+
         ?>
-         <p><a href="category_list.php">Category List</a></p>
+
     </body>
 </html>
