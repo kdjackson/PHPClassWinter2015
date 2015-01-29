@@ -1,8 +1,10 @@
+
+<h2>All</h2>
+
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+    foreach ($names as $key => $value) {
+    
+        echo '<p><a href="?view=details&id=',$value['id'],'">', $value['name'], '</a></p>';
+        
+    } 
+?>
