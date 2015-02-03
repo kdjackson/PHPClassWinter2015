@@ -73,6 +73,9 @@
         <input type="submit" value="Add"></input>
     </form>
 
+    <?php if (!empty($error_message)) { ?>
+    <?php echo $error_message;?>
+    <?php } // end if ?>
 
     <br />
 
