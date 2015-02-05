@@ -3,6 +3,9 @@ require('../model/database.php');
 require('../model/product_db.php');
 require('../model/category_db.php');
 
+    
+
+
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
 } else if (isset($_GET['action'])) {
@@ -11,9 +14,13 @@ if (isset($_POST['action'])) {
     $action = 'list_products';
 }
 
+if ($action =='list_categories') {
+    include('category_list.php');
+}
+
 if ($action == 'list_products') {
     // Get the current category ID
-    $category_id = $_GET['category_id'];
+    $category_id = filter_input(INPUT_GET,'category_id');
     if (!isset($category_id)) {
         $category_id = 1;
     }
@@ -32,6 +39,7 @@ if ($action == 'list_products') {
 
     // Delete the product
     delete_product($product_id);
+    
 
     // Display the Product List page for the current category
     header("Location: .?category_id=$category_id");
@@ -55,4 +63,17 @@ if ($action == 'list_products') {
         header("Location: .?category_id=$category_id");
     }
 }
+    //add category
+
+    
+    if (empty($category_name)) {
+    $error = "Invalid Category Name. Check all fields and try again.";
+    } else {
+    // If valid, add the product to the database
+    $query = "INSERT INTO categories
+                 (categoryName)
+              VALUES
+                 ('$category_name')";
+    $db->exec($query);
+    }
 ?>

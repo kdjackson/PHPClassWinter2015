@@ -17,6 +17,19 @@ function get_category_name($category_id) {
     return $category_name;
 }
 //Add Category
-
+function add_category() {
+    global $db;
+    $query = "INSERT INTO categories
+                 (categoryName)
+              VALUES
+                 ('$category_name')";
+    $db->exec($query);
+}
 //Delete Category
+function delete_category() {
+    global $db;
+    $query = "DELETE FROM categories
+              WHERE categoryName = '$category_name'";
+    $db->exec($query);
+}
 ?>
