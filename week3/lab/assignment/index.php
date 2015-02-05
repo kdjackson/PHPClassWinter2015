@@ -1,7 +1,7 @@
 <?php
     $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
   
-    $dbs = $db->prepare('insert demo set name = :name, email = :email');  
+    $dbs = $db->prepare('insert users set name = :name, email = :email');  
     
     $dbs->bindParam(':name', $name, PDO::PARAM_STR);
     $dbs->bindParam(':email', $email, PDO::PARAM_STR);
