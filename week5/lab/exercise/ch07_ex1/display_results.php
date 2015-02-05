@@ -5,8 +5,9 @@
     $phone = $_POST['phone'];
     $heard_from = filter_input(INPUT_POST, 'heard_from');
     $wants_updates = filter_input(INPUT_POST, 'wants_updates');
-    $contact_via = $_POST['contact_via'];
-    $comments = $_POST['comments'];
+    $contact_via = filter_input(INPUT_POST,'contact_via');
+    $comments = filter_input(INPUT_POST, 'comments');
+    $comments = htmlspecialchars($comments);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
