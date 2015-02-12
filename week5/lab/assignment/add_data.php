@@ -56,9 +56,7 @@
             echo '<h1> Sign Up <strong>NOT</strong> Successful</h1>';
             include('index.php');
         }
-   
-        //Display the Sign Up Page
-        //include('index.php');
+
         
         
         
