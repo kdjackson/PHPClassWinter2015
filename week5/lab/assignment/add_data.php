@@ -46,7 +46,6 @@
                  (email, password)
               VALUES
                  ('$email', '$password')";
-        $db->exec($query);
         
         
         if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
