@@ -6,6 +6,7 @@
     </head>
     <body>
         <?php
+        if ( !empty($_POST) ) {
         
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
@@ -50,12 +51,11 @@
         
         if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
             echo '<h1> Sign Up Successful</h1>';
-            include('index.php');
         } else {
             echo '<h1> Sign Up <strong>NOT</strong> Successful</h1>';
-            include('index.php');
         }
-
+        }
+        include('index.php');
         
         
         
