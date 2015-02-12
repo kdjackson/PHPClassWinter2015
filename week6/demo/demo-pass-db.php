@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -11,26 +6,31 @@ and open the template in the editor.
     </head>
     <body>
         <?php
+        /* Note not a working demo */
         
-        $password = filter_input(INPUT_POST,'pass');
+        $password = filter_input(INPUT_POST, 'pass');
         
-        // add validation
+        // add validaion
         
         $password = sha1($password);
         
-        $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
-        
-        $dbs = $db->prepare('select * from signup where email = :email and pass'); 
+$pdo = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3308;", "root", "");
+
+$dbs = $db->prepare('select * from signup where email = :email and password = :password');  
+
+$dbs->bindParam(':password', $password, PDO::PARAM_STR);
+$dbs->bindParam(':email', $email, PDO::PARAM_STR);
             
-        $dbs->bindParam(':pass', $pass, PDO::PARAM_STR);
-        $dbs->bindParam(':email', $email, PDO::PARAM_STR);
-        
-        if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
-            echo '<h1> user was added</h1>';
-        } else {
-            echo '<h1> user <strong>NOT</strong> added</h1>';
-        }
-        
+
+ if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
+            echo '<h1> user was found</h1>';
+    } else {
+         echo '<h1> user <strong>NOT</strong> found</h1>';
+    }
+            
+              
+        // remember that an empty string has is still a hash
+        echo sha1('');
         ?>
     </body>
 </html>

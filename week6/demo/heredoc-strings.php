@@ -1,17 +1,17 @@
+<?php
+
+$my_str1 = 'string1';          
+  //heredoc        
+$str = <<<END
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>${my_str1}</title>
+        <h1> hi ${my_str1}</h1>
     </head>
     <body>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+END;
+echo $str; 
+
+?>

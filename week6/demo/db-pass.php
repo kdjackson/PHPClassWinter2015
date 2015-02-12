@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -11,31 +6,31 @@ and open the template in the editor.
     </head>
     <body>
         <?php
+        // put your code here
         
         
-        if( !empty($_POST)) {
-            
-            $userPass = filter_input(INPUT_POST, 'pass');
-            $userPassHash = sha1($userPass);
-            $passcode = sha1('password');
+            if ( !empty($_POST) ) {
+                
+                $userPass = filter_input(INPUT_POST, 'pass');
+                $userPassHash = sha1($userPass);
+                //$passcode = sha1('hidden');
+                $passcode = '99d72c7fc3e2e145870beab37c0b70e343ea9c3b';
 
-            $error_message = '';
-            
-            if($passcode == $userPassHash)
-         {
-             echo '<p>Passcode accepted</p>';
-         } else {
-             echo '<p>Passcode not accepted</p>';
-         }
-        } //end if empty statement
+
+                if ( $passcode == $userPassHash ) {
+                    echo '<p>Passcode acepted</p>';
+                } else {
+                    echo '<p>Passcode not acepted</p>';
+                }
+                
+            }
         ?>
         
-        <form action = "#" method = "post">
+        <form action="#" method="post">
             
-            Passcode: <input type="password" name="pass" value="" />
+           Passcode: <input type="password" name="pass" value="" />
             
             <input type="submit" value="submit" />
-            
             
         </form>
         

@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -11,7 +6,13 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
+           $email = 'test@test.com';           
+  
+            if ( filter_var($email, FILTER_VALIDATE_EMAIL) != false ) {
+                echo '<p>this email is valid</p>';
+            } else {
+                echo '<p>this email is <strong>NOT</strong> valid</p>';
+            }
         ?>
     </body>
 </html>
