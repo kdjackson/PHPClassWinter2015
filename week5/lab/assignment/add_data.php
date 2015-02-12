@@ -1,14 +1,3 @@
-<?php
-    $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
-  
-    $dbs = $db->prepare('insert signup set name = :name, email = :email');  
-    
-    $dbs->bindParam(':name', $name, PDO::PARAM_STR);
-    $dbs->bindParam(':email', $email, PDO::PARAM_STR);
-    
-   
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,16 +34,31 @@
          exit();
         }
         
+        $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
+  
+        $dbs = $db->prepare('insert signup set email = :email, password = :password');  
+    
+        $dbs->bindParam(':password', $password, PDO::PARAM_STR);
+        $dbs->bindParam(':email', $email, PDO::PARAM_STR);
+        
         // If valid, add signup to the database
         $query = "INSERT INTO signup
                  (email, password)
               VALUES
                  ('$email', '$password')";
         $db->exec($query);
-        echo "Sign Up Successful";
-  
+        
+        
+        if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
+            echo '<h1> Sign Up Successful</h1>';
+            include('index.php');
+        } else {
+            echo '<h1> Sign Up <strong>NOT</strong> Successful</h1>';
+            include('index.php');
+        }
+   
         //Display the Sign Up Page
-        include('index.php');
+        //include('index.php');
         
         
         
