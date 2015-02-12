@@ -10,7 +10,7 @@
         
         $password = filter_input(INPUT_POST, 'pass');
         
-        // add validaion
+        // add validation
         
         $password = sha1($password);
         

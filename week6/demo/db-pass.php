@@ -18,9 +18,9 @@
 
 
                 if ( $passcode == $userPassHash ) {
-                    echo '<p>Passcode acepted</p>';
+                    echo '<p>Passcode accepted</p>';
                 } else {
-                    echo '<p>Passcode not acepted</p>';
+                    echo '<p>Passcode not accepted</p>';
                 }
                 
             }
