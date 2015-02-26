@@ -31,21 +31,20 @@
          }
         
          $password = sha1($password);
-        
-         if ($error_message != '') {
-         include('index.php');
-         exit();
-         }
-     
+           
   
         if ( filter_var($email, FILTER_VALIDATE_EMAIL) != false ) {
                 echo '<p>this email is valid</p>';
         } else {
-                echo '<p>this email is <strong>NOT</strong> valid</p>';
+                $error_message .= '<p>this email is <strong>NOT</strong> valid</p>';
             }
         
-        
-       
+         if ($error_message != '') {
+         include('index.php');
+         exit();
+         } 
+         
+         
         $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
   
         $dbs = $db->prepare('insert signup set email = :email, password = :password');  
@@ -65,9 +64,9 @@
         } else {
             echo '<h1> Sign Up <strong>NOT</strong> Successful</h1>';
         }
-        }
-        include('index.php');
         
+        include('index.php');
+        }
         
         ?>
     </body>
