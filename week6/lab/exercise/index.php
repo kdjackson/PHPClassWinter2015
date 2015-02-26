@@ -19,22 +19,46 @@
             if (empty ($name) || ($name == '')) {
                 $message .= 'Name is a Required Field.\n';
             }
+            
+            $i = strpos($name, ' ');
+            if ($i === false) {
+                $message = 'No spaces were found in the name.';
+            }
+            
             if (empty ($email) ||($email == '')){
                 $message .= 'Email is a Required Field.\n';
             }
+            
             if ( filter_var($email, FILTER_VALIDATE_EMAIL) != false ) {
                 echo '<p>this email is valid</p>';
             } else {
-                echo '<p>this email is <strong>NOT</strong> valid.</p>';
+                echo  '<p>this email is <strong>NOT</strong> valid.</p>';
             }
+            
             if (empty ($phone) ||($phone =='')) {
                 $message .= 'Phone Number is a Required Field.\n';
             }
-            else {
-                $i = strpos($name, ' ');
-                if ($i === false) {
-                $message = 'No spaces were found in the name.';
-                    } else {
+            
+            if (!is_numeric($phone) ) {
+                $message .= 'Please enter only numeric characters for the Phone Number.\n';
+            }
+            
+            if (strlen ($phone) <7 || (strlen($phone) > 10)) {
+                $message .= "Phone number must be between 7 and 10 characters.";
+            }
+            
+            if (strlen ($phone) == 7 ) {
+                $part1 = substr($phone, 0, 3);
+                $part2 = substr($phone, 3);
+                $format_phone = $part1 . '-' . $part2;
+            } else {
+                $part1 = substr($phone, 0, 3);
+                $part2 = substr($phone, 3, 3);
+                $part3 = substr($phone, 6);
+                $format_phone = $part1 .'-' . $part2. '-' . $part3;
+            }
+            
+            if (!$message) {
                         $first_name = substr($name, 0, $i);
                         $last_name = substr($name, $i+1);
                         $first_name = ucfirst($first_name);
@@ -43,22 +67,24 @@
                              "Thank you for entering this data:\n\n" .
                              "Name: $first_name $last_name \n" .
                              "Email: $email \n" .
-                             "Phone: $phone";
+                             "Phone: $format_phone";
             }
-            }
+            
+
+            
 
 
             /*************************************************
              * validate and process the name
              ************************************************/
-            // 1. make sure the user enters a name
-            // 2. display the name with only the first letter capitalized
+            // 1. make sure the user enters a name !
+            // 2. display the name with only the first letter capitalized !
 
             /*************************************************
              * validate and process the email address
              ************************************************/
-            // 1. make sure the user enters an email
-            // 2. make sure the email address has at least one @ sign and one dot character
+            // 1. make sure the user enters an email!
+            // 2. make sure the email address has at least one @ sign and one dot character !
 
             /*************************************************
              * validate and process the phone number
