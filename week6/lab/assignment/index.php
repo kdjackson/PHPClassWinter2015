@@ -26,5 +26,8 @@
     <?php echo $error_message;?>
     <?php } // end if ?>
     
+    <p>Already Signed Up?</p>
+    <a href="login.php">Log In</a>
+    
     </body>
 </html>
