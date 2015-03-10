@@ -12,6 +12,7 @@ if (isset($_POST['tasklist'])) {
 
 $errors = array();
 
+if (!empty($_POST)) {
 switch( $_POST['action'] ) {
     case 'Add Task':
         $new_task = $_POST['newtask'];
@@ -43,12 +44,25 @@ switch( $_POST['action'] ) {
     
     case 'Promote Task':
         //splice - this is the last thing to do.
+        $selectedRow = $_POST['taskid'];
+        if ($selectedRow <= 0) {
+            echo 'Cannot Promote, Already Top-Priority';
+        } 
+        else 
+        {
+            $rowAbove = $task_list[$selectedRow - 1];
+            $rowBelow = $task_list[$selectedRow];
+            $task_list[$selectedRow] = $rowAbove;
+            $task_list[$selectedRow - 1] = $rowBelow;
+        }
+        break;
         
     case 'Sort Tasks':
 
         sort($task_list, SORT_STRING);
         break;
 
+}
 }
 
 include('task_list.php');
