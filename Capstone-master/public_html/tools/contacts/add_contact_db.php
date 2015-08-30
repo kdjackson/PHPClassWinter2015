@@ -71,4 +71,3 @@ if ($success == true) {
 }
 
 echo json_encode($db_success);
-
