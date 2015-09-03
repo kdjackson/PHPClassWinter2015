@@ -27,7 +27,11 @@ cell4.innerHTML = "<input type='text'/>";
 
 function deleteRow() {
 
-document.getElementById("table_data").deleteRow(-1);
+     document.getElementById("table_data").deleteRow(-1);
+
+
+
+
 }
 
 

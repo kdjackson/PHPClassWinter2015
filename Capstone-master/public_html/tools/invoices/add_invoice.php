@@ -52,7 +52,7 @@
 
             <p>
             <table id="table_data">
-                <tr id="header">
+                <tr id="header_row">
                     <th>Description</th>
                     <th>Price</th> 
                     <th>Quantity</th>
