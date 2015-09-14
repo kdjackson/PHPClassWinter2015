@@ -7,6 +7,8 @@ del.addEventListener('click',deleteRow);
 
 var table = document.getElementById("table_data");
 
+
+
 function insertRow() {
 //insert a row at the bottom of the table
 var row = table.insertRow(-1);
@@ -32,3 +34,6 @@ function deleteRow() {
 
 };
 
+function calculate() {
+    
+}

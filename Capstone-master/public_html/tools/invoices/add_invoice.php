@@ -63,9 +63,9 @@
                 <tbody>
                 <tr>
                     <td><input name="description_1" class="validate" type="text" maxlength="150"</td>
-                    <td><input class="invoice_price" name="price_1" type="number" maxlength="99"</td> 
-                    <td><input class="invoice_quantity" name="quantity_1" type="number" maxlength="99"</td>
-                    <td><input class="invoice_total" name="total_1" type="text" maxlength="99"</td>
+                    <td><input class="invoice_price" name="price_1" type="number" maxlength="99" onchange="calculate()"</td> 
+                    <td><input class="invoice_quantity" name="quantity_1" type="number" maxlength="99" onchange="calculate()"</td>
+                    <td><input id="invoice_total" class="invoice_total" name="total_1" type="text" maxlength="99" onchange="calculate()"</td>
                 
                 </tr>
                 </tbody>
