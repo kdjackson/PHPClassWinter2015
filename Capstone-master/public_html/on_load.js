@@ -6,6 +6,9 @@ $(document).ready(function(){
 		var page = "";
 		
 		switch(this.id){
+                        case "link_index":
+                                page = "index.php #content";
+                                break;
 			case "link_contacts":
 				page = "tools/contacts/index.php";
 				break;

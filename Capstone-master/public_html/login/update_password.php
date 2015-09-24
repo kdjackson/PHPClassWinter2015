@@ -23,7 +23,7 @@
             $dbs->bindParam(':password', $password, PDO::PARAM_STR);
             //if the update is succesfful bring user to login    
             if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
-                    header('Location:login.php');
+                    header('Location:index.php');
             //if unsuccessful try again        
             } else {
                     echo '<h1> Password Not Updated </h1>';
